@@ -51,10 +51,6 @@ export default function ExamPreview() {
                     <div className="space-y-6">
                         <div>
                             <h1 className="text-xl font-medium mb-4">Preview Exam Paper</h1>
-                            <div className="space-y-2 mb-4">
-                                <p className="text-sm text-gray-600">Name</p>
-                                <p className="font-medium">{examData.course?.name ?? 'Not Selected'}</p>
-                            </div>
                             <div className="space-y-2">
                                 <p className="text-sm text-gray-600">Exam Type</p>
                                 <p className="font-medium">{examType}</p>
@@ -65,10 +61,6 @@ export default function ExamPreview() {
                             <div className="space-y-1">
                                 <p className="text-sm text-gray-600">Course</p>
                                 <p className="font-medium">{examData.course?.name ?? 'Not Selected'}</p>
-                            </div>
-                            <div className="space-y-1">
-                                <p className="text-sm text-gray-600">Subject</p>
-                                <p className="font-medium">Networking</p>
                             </div>
                         </div>
 

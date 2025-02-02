@@ -35,7 +35,7 @@ const ExamCard: React.FC<ExamCardProps> = ({
 
       <div className="space-y-1 text-sm text-gray-500">
         <p>Course: {course}</p>
-        <p>Subject: {subject}</p>
+        <p>Exam Type: {subject}</p>
       </div>
 
       <div className="flex items-center gap-2 text-sm text-gray-500">
@@ -99,11 +99,11 @@ export default function ExamPage() {
         </TabsList>
       </Tabs>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-0">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-0">
         <ExamCard
-          title="KMAT"
-          course="KSBL Management Admission Test"
-          subject="Sample Test"
+          title="Object Oreinted Programming"
+          course="Object Oreinted Programming"
+          subject="Mid Exam"
           date="03-01-2023"
           startTime="12:30 AM"
           endTime="01:40 PM"
@@ -113,9 +113,9 @@ export default function ExamPage() {
         />
 
         <ExamCard
-          title="Articulate Structure of C++ and Java in Semester 1"
-          course="B.Tech Specialization in Health Informatics"
-          subject="Network Engineering"
+          title="Data Structures"
+          course="Data Structures"
+          subject="Mid Exam"
           date="03-01-2023"
           startTime="12:30 AM"
           endTime="01:40 PM"
@@ -129,7 +129,7 @@ export default function ExamPage() {
           <ExamCard
             title={`${examData.course.name} in Semester 1`}
             course={examData.course.name}
-            subject="Network Engineering"
+            subject="Final Exam"
             date={examData.examDate.toLocaleDateString()}
             startTime={examData.startTime}
             endTime={examData.endTime}

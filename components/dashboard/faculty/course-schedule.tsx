@@ -32,6 +32,8 @@ export function CourseSchedule({ courses }: CourseScheduleProps) {
     setIsAscending(!isAscending); // Toggle the sort order
   };
 
+ 
+
   return (
     <Card className="bg-gray-50">
       <CardHeader className="border-b border-gray-200">
@@ -44,29 +46,27 @@ export function CourseSchedule({ courses }: CourseScheduleProps) {
         <Table>
           <TableHeader>
             <TableRow className="bg-gray-100">
-              <TableHead className="ml-60 flex items-center justify-around">
-                <div />
+              <TableHead className="flex items-center justify-around">
+                <span className="text-gray-600 font-semibold">Course Name</span>
                 <button onClick={handleSort} className="flex items-center justify-center gap-2 text-gray-600">
                   Date
                   <Image
                     src={arrow}
                     alt="arrow"
-                    className={`h-5 w-5 transition-transform ${isAscending ? "rotate-180" : ""
-                      }`}
+                    className={`h-5 w-5 transition-transform ${isAscending ? "rotate-180" : ""}`}
                   />
                 </button>
               </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {sortedCourses.map((course, index) => (
+            {courses.map((course, index) => (
               <TableRow
                 key={course.id}
-                className={`flex justify-evenly pl-96 ${index % 2 === 0 ? "bg-[#FFECD9]" : "bg-white"}`}
+                className={`flex justify-evenly px-10 ${index % 2 === 0 ? "bg-[#FFECD9]" : "bg-white"}`}
               >
-                <TableCell className="text-gray-700">
-                  {course.date}
-                </TableCell>
+                <TableCell className="text-gray-700">{course.name}</TableCell>
+                <TableCell className="text-gray-700">{course.date}</TableCell>
               </TableRow>
             ))}
           </TableBody>

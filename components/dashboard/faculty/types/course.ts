@@ -11,5 +11,6 @@ export interface Task {
 export interface Course {
   id: string
   date: string
+  name:string
 }
 

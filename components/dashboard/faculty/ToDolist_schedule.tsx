@@ -1,5 +1,6 @@
 import { CourseSchedule } from "./course-schedule"
 import { TaskList } from "./task-list"
+import { Course } from "./types/course"
 
 const tasks = [
   {
@@ -53,14 +54,11 @@ const tasks = [
   },
 ]
 
-const courses = [
-  { id: "1", date: "Dec 10, 2024" },
-  { id: "2", date: "Dec 11, 2024" },
-  { id: "3", date: "Dec 16, 2024" },
-  { id: "4", date: "Dec 20, 2024" },
-  { id: "5", date: "Dec 22, 2024" },
-  { id: "6", date: "Dec 25, 2024" },
-  { id: "7", date: "Dec 28, 2024" },
+const courses: Course[] = [
+  { id: "1", date: "Dec 10, 2024", name: "Programming Fundamentals" },
+  { id: "2", date: "Dec 11, 2024", name: "Object Oreinted Programming" },
+  { id: "3", date: "Dec 16, 2024", name: "Data Structures" },
+  { id: "4", date: "Dec 20, 2024", name: "Introduction to Information Systems" },
 ]
 
 const ToDolist_schedule = () => {

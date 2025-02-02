@@ -1,7 +1,5 @@
 'use client'
 
-
-
 import { Part, Question } from "@/app/dashboard/faculty/editor/page";
 import { ExamData } from "@/types/exam";
 import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from "react";
@@ -20,7 +18,11 @@ type ExamContextType = {
 const ExamContext = createContext<ExamContextType | undefined>(undefined)
 
 export const ExamProvider = ({ children }: { children: ReactNode }) => {
+    
     const [parts, setParts] = useState<Part[]>([{ id: "1", name: "Part A", questions: [] }])
+
+
+
     const [examType, setExamType] = useState<'Midterm' | 'Final' | undefined>(undefined)
     const [totalMarks, setTotalMarks] = useState<number>(0);
     const [examData, setExamData] = useState<ExamData>({
