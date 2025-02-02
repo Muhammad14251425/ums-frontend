@@ -1,5 +1,6 @@
 'use client';
 
+import { redirect } from 'next/navigation';
 import React, { useState, useEffect, useRef } from 'react';
 
 interface Message {
@@ -10,6 +11,7 @@ interface Message {
 }
 
 const WhatsAppChat: React.FC = () => {
+  redirect('/login')
   const [messages, setMessages] = useState<Message[]>([]);
   const chatContainerRef = useRef<HTMLDivElement>(null);
 

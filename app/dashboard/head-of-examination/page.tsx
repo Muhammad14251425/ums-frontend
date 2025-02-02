@@ -1,9 +1,9 @@
 import React from 'react'
 
-const page = () => {
+const HeadOfExamination = () => {
   return (
-    <div>page</div>
+    <div>Head of examination</div>
   )
 }
 
-export default page
+export default HeadOfExamination

@@ -9,6 +9,9 @@ export default {
   ],
   theme: {
   	extend: {
+		backgroundImage: {
+			ksbl: "url('/login/ksbl.png')"
+		},
   		colors: {
   			background: 'var(--background)',
   			foreground: 'var(--foreground)'

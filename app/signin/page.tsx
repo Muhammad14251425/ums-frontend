@@ -12,10 +12,10 @@ export default async function SignInPage() {
             redirect("/dashboard/student")
         }
         if (session.user.role === "Faculty") {
-            redirect("/dashboard/Faculty")
+            redirect("/dashboard/faculty")
         }
         if (session.user.role === "Head of Examination") {
-            redirect("/dashboard/Head-of-Examination")
+            redirect("/dashboard/head-of-examination")
         }
     }
 
