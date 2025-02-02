@@ -31,6 +31,14 @@ const MCQEditor = ({ onSave, initialContent = "", initialMarks = 0, initialChoic
         ],
     )
 
+    useEffect(() => {
+        // Load saved MCQs from localStorage if available
+        const savedMCQs = localStorage.getItem("mcqs")
+        if (savedMCQs) {
+            setChoices(JSON.parse(savedMCQs))
+        }
+    }, [])
+
     const addChoice = () => {
         if (choices.length < 10) {
             setChoices([...choices, { id: String(choices.length + 1), content: "", isCorrect: false }])
@@ -51,6 +59,8 @@ const MCQEditor = ({ onSave, initialContent = "", initialMarks = 0, initialChoic
 
     const handleSave = () => {
         if (choices.some((choice) => choice.isCorrect)) {
+            // Save MCQ data to localStorage
+            localStorage.setItem("mcqs", JSON.stringify(choices))
 
             // Pass the MCQ data to the parent component
             onSave({ type: "mcq", content: question, marks, choices })
@@ -96,12 +106,12 @@ const MCQEditor = ({ onSave, initialContent = "", initialMarks = 0, initialChoic
                     </div>
                 ))}
                 {choices.length < 10 && (
-                    <Button onClick={addChoice} className="mt-2 bg-blue-500 text-white">
+                    <Button onClick={addChoice} className="mt-2">
                         Add Choice
                     </Button>
                 )}
             </div>
-            <Button onClick={handleSave} className="mt-4 bg-black text-white">
+            <Button onClick={handleSave} className="mt-4">
                 Done
             </Button>
         </div>
