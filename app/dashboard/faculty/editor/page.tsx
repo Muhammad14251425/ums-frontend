@@ -18,6 +18,7 @@ export type Question = {
   type: "normal" | "mcq"
   content: string
   marks: number
+  clo: string
   subQuestions: Question[]
   choices?: { id: string; content: string; isCorrect: boolean }[]
 }
@@ -29,7 +30,7 @@ export type Part = {
 }
 
 export default function ExamPaperEditor() {
-  const {parts , setParts} = useExam();
+  const { parts, setParts } = useExam();
   const [isAddingQuestion, setIsAddingQuestion] = useState(false)
   const [questionType, setQuestionType] = useState<"normal" | "mcq">("normal")
   const [editingQuestion, setEditingQuestion] = useState<{
@@ -60,9 +61,9 @@ export default function ExamPaperEditor() {
       prevParts.map((part) =>
         part.id === partId
           ? {
-              ...part,
-              questions: updateQuestionRecursively(part.questions, questionId, updatedQuestion, parentId),
-            }
+            ...part,
+            questions: updateQuestionRecursively(part.questions, questionId, updatedQuestion, parentId),
+          }
           : part,
       ),
     )
@@ -116,9 +117,9 @@ export default function ExamPaperEditor() {
       prevParts.map((part) =>
         part.id === partId
           ? {
-              ...part,
-              questions: addSubQuestionRecursively(part.questions, parentId, subQuestion),
-            }
+            ...part,
+            questions: addSubQuestionRecursively(part.questions, parentId, subQuestion),
+          }
           : part,
       ),
     )
@@ -161,7 +162,10 @@ export default function ExamPaperEditor() {
             <div className='ql-editor' dangerouslySetInnerHTML={{ __html: question.content }} />
           </div>
           <div className="flex items-center">
-            <span className="mr-2">Marks: {question.marks}</span>
+            <div className='flex flex-col'>
+              <span className="mr-2">Marks: {question.marks}</span>
+              <span className="mr-2">ClO: {question.clo}</span>
+            </div>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm">
@@ -212,8 +216,8 @@ export default function ExamPaperEditor() {
 
   const router = useRouter();
   const handleSubmit = () => {
-    localStorage.setItem("examPaper", JSON.stringify(parts)) 
-    router.push("/dashboard/faculty/preview-exam")  
+    localStorage.setItem("examPaper", JSON.stringify(parts))
+    router.push("/dashboard/faculty/preview-exam")
   }
 
   return (

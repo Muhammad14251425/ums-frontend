@@ -16,10 +16,10 @@ export function CourseSelection({ onSelect, selectedCourse }: CourseSelectionPro
   const [searchQuery, setSearchQuery] = useState('')
 
   const courses: Course[] = [
-    { id: '1', name: 'B.Tech Specialization in Health Informatics' },
-    { id: '2', name: 'B.Tech Specialization in Data Science' },
-    { id: '3', name: 'B.Tech Specialization in AI & ML' },
-    { id: '4', name: 'B.Tech Specialization in Cybersecurity' },
+    { id: '1', name: 'Programming Fundamentals' },
+    { id: '2', name: 'Object Oreinted Programming' },
+    { id: '3', name: 'Data Structures' },
+    { id: '4', name: 'Introduction to Information Systems' },
   ]
 
   const filteredCourses = courses.filter(course =>

@@ -8,15 +8,10 @@ import { useExam } from "@/hooks/useExam"
 
 export default function ExamPreview() {
 
-    const { examData, totalMarks, examType } = useExam()
+    const { examData, totalMarks, examType, instructions, setInstructions } = useExam()
 
     // State to manage the list of instructions
-    const [instructions, setInstructions] = useState<string[]>([
-        "Read all questions carefully before answering.",
-        "Attempt all questions unless instructed otherwise.",
-        "Use only the provided answer sheets.",
-        "Show all calculations where applicable.",
-    ])
+
 
     // State to handle editing an instruction
     const [editIndex, setEditIndex] = useState<number | null>(null)

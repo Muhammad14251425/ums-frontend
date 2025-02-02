@@ -7,12 +7,14 @@ import { ExamData } from "@/types/exam";
 import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from "react";
 type ExamContextType = {
     parts: Part[]
+    instructions: string[]
     examType: "Midterm" | "Final" | undefined
     totalMarks: number;
     setParts: Dispatch<SetStateAction<Part[]>>
     examData: ExamData
     setExamData: Dispatch<SetStateAction<ExamData>>
     setExamType: Dispatch<SetStateAction<"Midterm" | "Final" | undefined>>
+    setInstructions: Dispatch<SetStateAction<string[]>>
 }
 
 const ExamContext = createContext<ExamContextType | undefined>(undefined)
@@ -25,6 +27,12 @@ export const ExamProvider = ({ children }: { children: ReactNode }) => {
         questions: [],
         examDate: undefined,
     })
+    const [instructions, setInstructions] = useState<string[]>([
+        "Read all questions carefully before answering.",
+        "Attempt all questions unless instructed otherwise.",
+        "Use only the provided answer sheets.",
+        "Show all calculations where applicable.",
+    ])
     useEffect(() => {
         setTotalMarks(calculateTotalMarks(parts))
     }, [parts])
@@ -40,7 +48,7 @@ export const ExamProvider = ({ children }: { children: ReactNode }) => {
     };
 
     return (
-        <ExamContext.Provider value={{ parts, setParts, examData, setExamData, totalMarks, examType, setExamType }}>
+        <ExamContext.Provider value={{ parts, setParts, examData, setExamData, totalMarks, examType, setExamType, instructions, setInstructions }}>
             {children}
         </ExamContext.Provider>
     )
